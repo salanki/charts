@@ -9,7 +9,8 @@ metadata:
     heritage: {{ .Release.Service }} 
 spec:
   type: ClusterIP
-  clusterIP: None
+  externalIPs:
+    {{- toYaml .Values.service.externalIPs | nindent 4 }}
   ports:
   - name: headless
     port: 1883
